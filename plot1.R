@@ -1,0 +1,5 @@
+library(dplyr)
+by_year <- group_by(NEI, year)
+em <- summarise(by_year, total_em=sum(Emissions))
+quartz()
+with(em, plot(total_em ~ year,type="l"))
