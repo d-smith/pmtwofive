@@ -13,5 +13,5 @@ baltimore <- filter(NEI,fips=="06037")
 by_year <- group_by(baltimore, year,type)
 em <- summarise(by_year, total_em=sum(Emissions))
 
-qplot(year, total_em,data=em,color=type,geom=c("point","line"))
+qplot(year, total_em,data=em,color=type,geom=c("point","line"), main="Baltimore Emissions per Year",ylab="total emissions (tons)")
 ggsave(filename="./plot3.png")
