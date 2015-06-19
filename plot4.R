@@ -24,5 +24,5 @@ em <- summarise(by_year, total_em=sum(Emissions))
 
 png(filename="./plot4.png", width=480, height=480)
 with(em, plot(total_em ~ year,type="o", ylab="Total Emissions (Tons)",
-              xlab="Year",main="United States Coal Emissions By Year"))
+              xlab="Year",main="United States - Coal Combustion Emissions"))
 dev.off()

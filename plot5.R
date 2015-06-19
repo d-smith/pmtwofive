@@ -12,7 +12,7 @@ SCC <- readRDS("Source_Classification_Code.rds")
 auto <- filter(SCC, grepl('Onroad',Data.Category))
 
 ## Filter the NEI table to Baltimore observations before joining tables
-baltimore <- filter(NEI,fips=="06037")
+baltimore <- filter(NEI,fips=="24510")
 
 autoTable <- as.data.table(auto)
 baltimoreTable <- as.data.table(baltimore)
@@ -25,5 +25,8 @@ by_year <- group_by(autoEmissions, year)
 em <- summarise(by_year, total_em=sum(Emissions))
 
 ## Plot the result
-qplot(year, total_em, data=em,geom=c("point","line"),main="Baltimore Auto Emissions")
-ggsave(filename="./plot5.png")
+png(filename="./plot5.png", width=480, height=480)
+print(qplot(year, total_em, data=em,geom=c("point","line"),
+            ylab="total emissions (tons)",
+            main="Baltimore Motor Vehicle Emissions"))
+dev.off()
